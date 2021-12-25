@@ -13,7 +13,6 @@ version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_1_8
 
 repositories {
-    mavenLocal()
     //mavenCentral()
     maven {
         url = uri(project.properties["artifactory.url"]!!)
@@ -32,23 +31,33 @@ dependencyManagement {
 }
 
 dependencies {
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
-    implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
+    testImplementation("org.jetbrains.kotlin:kotlin-test-junit")
+    testImplementation("org.mockito.kotlin:mockito-kotlin:3.2.0")
+
+    implementation("org.springframework.boot:spring-boot-starter-webflux")
 
     implementation("org.apache.logging.log4j:log4j-api:2.17.0")
     implementation("org.apache.logging.log4j:log4j-core:2.17.0")
     implementation("org.apache.logging.log4j:log4j-jcl:2.17.0")
     implementation("org.apache.logging.log4j:log4j-slf4j-impl:2.17.0")
 
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.11.3")
+
+    implementation("org.apache.ignite:ignite-core:2.11.0")
+    implementation("org.apache.ignite:ignite-slf4j:2.11.0")
+    implementation("org.apache.ignite:ignite-spring:2.11.0")
+    implementation("com.h2database:h2:1.4.197")
+
     implementation("io.projectreactor.tools:blockhound:1.0.6.RELEASE")
 
-    implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-server")
+    implementation("org.springframework.cloud:spring-cloud-starter-bootstrap")
+    implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client")
+
+    implementation("org.postgresql:postgresql:9.4.1212")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
-    testImplementation("io.projectreactor:reactor-test")
 }
 
 configurations.all {
@@ -63,10 +72,7 @@ tasks.withType<KotlinCompile> {
 }
 
 tasks.withType<Test> {
-    useJUnitPlatform()
-}
-
-tasks.test {
+    useJUnit()
     filter {
         excludeTestsMatching("*RemoteTest")
     }
@@ -75,18 +81,4 @@ tasks.test {
 tasks.bootJar {
     archiveFileName.set("service.jar")
     destinationDirectory.set(file("bin"))
-}
-
-
-class GojoTwo : Plugin<Project> {
-    override fun apply(prj: Project) {
-        prj.tasks.register("oops", object : Action<Task> {
-            override fun execute(t: Task) {
-                t.doLast {
-                    println("Hello from plugin 'GojoTwo'")
-                }
-            }
-        })
-
-    }
 }

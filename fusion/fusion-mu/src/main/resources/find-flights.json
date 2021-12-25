@@ -1,0 +1,34 @@
+{
+  "requests": [
+    {
+      "@class": "com.kaizensundays.fusion.mu.messages.FindFlight",
+      "user": "?",
+      "ip": "localhost",
+      "from": "LAX",
+      "to": "LAS",
+      "depart": "2021-10-11",
+      "goback": "2021-10-17",
+      "uuid": "7de066d6-f526-4c07-a1b2-21c50aaa9c60"
+    },
+    {
+      "@class": "com.kaizensundays.fusion.mu.messages.FindFlight",
+      "user": "?",
+      "ip": "localhost",
+      "from": "LAX",
+      "to": "PHX",
+      "depart": "2021-10-11",
+      "goback": "2021-10-17",
+      "uuid": "25029ccd-4034-467e-8aac-d4149d0f83b2"
+    },
+    {
+      "@class": "com.kaizensundays.fusion.mu.messages.FindFlight",
+      "user": "?",
+      "ip": "localhost",
+      "from": "LAX",
+      "to": "SMF",
+      "depart": "2021-10-11",
+      "goback": "2021-10-17",
+      "uuid": "4b06d7b1-d228-4b05-aa61-0e935f2ccf5f"
+    }
+  ]
+}
