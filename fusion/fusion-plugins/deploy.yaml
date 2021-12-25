@@ -1,0 +1,5 @@
+
+  host: Kube
+  port: 16443
+  username: admin
+  caCertFile: ca.crt

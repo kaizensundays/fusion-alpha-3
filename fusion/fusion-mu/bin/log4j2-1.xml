@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO">
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} (%t) %-5level [%c{1}] %m%n"/>
+        </Console>
+        <File name="File" fileName="service-1.log" immediateFlush="true" append="false">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} (%t) %-5level [%c{1}] %m%n"/>
+        </File>
+    </Appenders>
+    <Loggers>
+        <Logger name="org.springframework" level="INFO"/>
+        <Logger name="io.netty" level="INFO"/>
+        <Logger name="reactor.netty" level="INFO"/>
+        <Logger name="org.apache.ignite" level="INFO"/>
+        <Logger name="org.hibernate" level="INFO"/>
+
+        <Logger name="com.kaizensundays" level="INFO"/>
+
+        <Root level="all">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="File"/>
+        </Root>
+    </Loggers>
+</Configuration>

@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: fusion-mu
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:7777/eureka/
